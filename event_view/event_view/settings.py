@@ -23,6 +23,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = []
 
+DATABASES = {}
+
 
 # Application definition
 
