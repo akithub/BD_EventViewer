@@ -1,37 +1,79 @@
+body {
+  background-image: url("../images/CorkBoard.jpg");
+}
+
 .poster {
-		display:inline-block;
-		background: #fff;
-		box-shadow: 0 0 10px rgba(0,0,0,0.3);
-		margin: 12px 23px;
-		padding: 24px;
-		position: relative;
-		z-index: 0;
-		color: #3a3a3a;
-		/* font-family: 'M PLUS Rounded 1c', sans-serif; */
-		font-family: 'Kosugi Maru', sans-serif;
-		font-size: medium;
+  width: 100%;
+  display: inline-block;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 3em 1em 1em 1em;
+  padding: 3em 2em 3em 2em;
+  position: relative;
+  z-index: 0;
+  color: #3a3a3a;
+  font-size: medium;
 }
-.poster h1{
-		color: #3a3a3a;
+.poster h1 {
+  color: #3a3a3a;
 }
-.poster:before, .poster:after {
-		content: "";
-		height: 98%;
-		position: absolute;
-		width: 100%;
-		z-index: -1;
+.poster:before,
+.poster:after {
+  content: "";
+  height: 98%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
 }
 .poster:before {
-		background: #fafafa;
-		box-shadow: 0 0 8px rgba(0,0,0,0.2);
-		left: -5px;
-		top: 4px;
-		transform: rotate(-2.5deg);
+  background: #fafafa;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  left: -5px;
+  top: 4px;
+  transform: rotate(-2.5deg);
 }
 .poster:after {
-		background: #f9f7e3;
-		box-shadow: 0 0 3px rgba(0,0,0,0.2);
-		right: -3px;
-		top: 1px;
-		transform: rotate(1.4deg);
+  background: #f9f7e3;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  right: -3px;
+  top: 1px;
+  transform: rotate(1.4deg);
+}
+.event-period {
+  position: absolute;
+  right: 0;
+  top: -2em;
+  padding: 1em 3em;
+  transform: rotate(5.4deg);
+  line-height: 2.5em;
+  z-index: 20;
+  font-weight: bold;
+  background-color: #3399ff;
+}
+.container {
+  margin: 0 auto;
+  padding: 5px;
+  width: 90%;
+  column-count: 3;
+  column-gap: 0;
+  min-width: 98%;
+}
+
+@media (max-width: 800px) {
+  .container {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    column-count: 1;
+  }
+}
+
+.item {
+  padding: 1em;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
