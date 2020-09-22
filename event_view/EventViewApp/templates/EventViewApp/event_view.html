@@ -1,15 +1,13 @@
-{% extends 'EventViewApp/_layout.html' %}
-
-{% block content %}
-<button class="btn btn-outline-primary">daily</button>
-<button class="btn btn-outline-danger">Temporarily</button>
-<button class="btn btn-outline-primary">Forever</button>
-<div class="container">
-    {% for event in events %}
-    <div class="item">
-        {% include 'EventViewApp/parts/poster.html' %}
-    </div>
-    {% endfor %}
+{% extends 'EventViewApp/_layout.html' %} {% block content %}
+<div class="container-fluid">
+  <button class="btn btn-outline-primary">daily</button>
+  <button class="btn btn-outline-danger">Temporarily</button>
+  <button class="btn btn-outline-primary">Forever</button>
+</div>
+<div class="masonry">
+  {% for event in events %}
+  <div class="masonry-item">{% include 'EventViewApp/parts/poster.html' %}</div>
+  {% endfor %}
 </div>
 
 {% endblock %}

@@ -50,7 +50,7 @@ body {
   font-weight: bold;
   background-color: #3399ff;
 }
-.container {
+.masonry {
   margin: 0 auto;
   padding: 5px;
   width: 90%;
@@ -60,18 +60,18 @@ body {
 }
 
 @media (max-width: 800px) {
-  .container {
+  .masonry {
     column-count: 2;
   }
 }
 
 @media (max-width: 480px) {
-  .container {
+  .masonry {
     column-count: 1;
   }
 }
 
-.item {
+.masonry-item {
   padding: 1em;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
