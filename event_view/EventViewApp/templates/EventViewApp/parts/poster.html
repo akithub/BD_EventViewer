@@ -1,8 +1,9 @@
 <div class="poster">
-    <div class="event-period">{{ event.period }}</div>
-    <h4>{{ event.title }}</h4>
-    <h5>{{ event.start_date|date:"Y-m-j" }}</h5>
-    <h5>{{ event.end_date|date:"Y-m-j" }}</h5>
-    <div>{{ event.content }}</div>
-    <a href="{{ event.url }}" target="_blank" rel="noopener noreferrer">リンク</a>
+  <div class="event-period">{{ event.period }}</div>
+  <h4>{{ event.title }}</h4>
+  <h5>{{ event.start_date|date:"Y-m-j" }}</h5>
+  <h5>{{ event.end_date|date:"Y-m-j" }}</h5>
+  <div>{{ event.content }}</div>
+  <a href="/eventview/{{ event.id }}/edit"> 編集 </a>
+  <a href="{{ event.url }}" target="_blank" rel="noopener noreferrer">リンク</a>
 </div>
