@@ -10,3 +10,5 @@ class Event(models.Model):
     content = models.TextField()
     period = models.IntegerField()
     url = models.URLField()
+    def __str__(self):
+        return self.title
