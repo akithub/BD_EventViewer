@@ -5,45 +5,22 @@
       <form action="" method="POST">
         {% csrf_token %}
         <label for="id_title">タイトル</label>
-        <input
-          type="text"
-          name="title"
-          maxlength="200"
-          id="id_title"
-          value="{{ event.title }}"
-        />
+        <input type="text" name="title" maxlength="200" id="id_title" value="{{ event.title }}" />
         <label for="id_start_date">開始日</label>
-        <input
-          type="date"
-          name="start_date"
-          id="id_start_date"
-          value="{{ event.start_date|date:'Y-m-d' }}"
-        />
+        <input type="date" name="start_date" id="id_start_date" value="{{ event.start_date|date:'Y-m-d' }}" />
         <label for="id_end_date">終了日</label>
-        <input
-          type="date"
-          name="end_date"
-          id="id_end_date"
-          value="{{ event.end_date|date:'Y-m-d' }}"
-        />
+        <input type="date" name="end_date" id="id_end_date" value="{{ event.end_date|date:'Y-m-d' }}" />
         <label for="id_end_date">内容</label>
         <textarea name="content" cols="40" rows="10" id="id_content">
           {{ event.content }}
         </textarea>
         <label for="id_period">期間</label>
-        {% for period in periods %} <input type="radio" name="period" value="{{
-        period.0 }}" id="id_{{ period.1 }}" {% if event.period == period.1 %}
-        checked {% endif %} />
+        {% for period in periods %}
+        <input type="radio" name="period" value="{{ period.0 }}" id="id_{{ period.1 }}" {% if event.period == period.0 %} checked {% endif %} />
         <label for="id_{{ period.1 }}"> {{ period.1 }} </label>
         {% endfor %}
         <label for="id_url">URL</label>
-        <input
-          type="url"
-          name="url"
-          maxlength="200"
-          id="id_url"
-          value="{{ event.url }}"
-        />
+        <input type="url" name="url" maxlength="200" id="id_url" value="{{ event.url }}" />
         <button type="submit">保存</button>
       </form>
     </div>
