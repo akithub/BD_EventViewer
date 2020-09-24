@@ -15,6 +15,21 @@ def event_view(request):
 
 
 
+def event_add(request):
+    event = Event()
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+        else:
+            print("ERROR FORM INVALID")
+            for elm in form:
+                print(elm)
+    context = {
+        'event': event
+    }
+    return render(request, 'EventViewApp/edit.html', context)
+
 def event_edit(request, event_id):
     try:
         event = Event.objects.get(pk=event_id)
