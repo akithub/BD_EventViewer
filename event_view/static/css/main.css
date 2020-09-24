@@ -1,9 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+
 body {
   background-image: url("../images/CorkBoard.jpg");
 }
 
 #back-btn {
   color: #3a3a3a;
+}
+.Daily {
+  background-color: #3399ff;
+}
+.Temporarily {
+  background-color: #ff5252;
+}
+.Forever {
+  background-color: #d0e226;
+}
+.event-date {
+  font-size: larger;
+  font-weight: 700;
+}
+.event-content {
+  margin: 1em 0;
+}
+.event-link {
+  font-family: "Caveat", cursive;
+  font-size: 2em;
+}
+.event {
+  margin: 1em 0 0 0;
+}
+.event-period {
+  position: absolute;
+  right: -5px;
+  top: -1.2em;
+  padding: 0 2em;
+  transform: rotate(5.4deg);
+  line-height: 2.5em;
+  z-index: 20;
+  font-weight: bold;
+  font-family: "Caveat", cursive;
+  font-size: 2em;
 }
 .poster {
   width: 100%;
@@ -41,17 +78,6 @@ body {
   right: -3px;
   top: 1px;
   transform: rotate(1.4deg);
-}
-.event-period {
-  position: absolute;
-  right: 0;
-  top: -2em;
-  padding: 1em 3em;
-  transform: rotate(5.4deg);
-  line-height: 2.5em;
-  z-index: 20;
-  font-weight: bold;
-  background-color: #3399ff;
 }
 .masonry {
   margin: 0 auto;
