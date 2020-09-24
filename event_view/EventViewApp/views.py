@@ -44,6 +44,7 @@ def event_edit(request, event_id):
             for elm in form:
                 print(elm)
     context = {
-        'event': event
+        'event': event,
+        'periods': Event.PERIOD_CHOICE
     }
     return render(request, 'EventViewApp/edit.html', context)

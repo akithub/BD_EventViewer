@@ -1,5 +1,5 @@
 <div class="poster">
-  <div class="event-period">{{ event.period }}</div>
+  <div class="event-period">{{ event.get_period_display }}</div>
   <h4>{{ event.title }}</h4>
   <h5>{{ event.start_date|date:"Y-m-j" }}</h5>
   <h5>{{ event.end_date|date:"Y-m-j" }}</h5>

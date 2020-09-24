@@ -31,12 +31,11 @@
           {{ event.content }}
         </textarea>
         <label for="id_period">期間</label>
-        <input
-          type="number"
-          name="period"
-          id="id_period"
-          value="{{ event.period }}"
-        />
+        {% for period in periods %} <input type="radio" name="period" value="{{
+        period.0 }}" id="id_{{ period.1 }}" {% if event.period == period.1 %}
+        checked {% endif %} />
+        <label for="id_{{ period.1 }}"> {{ period.1 }} </label>
+        {% endfor %}
         <label for="id_url">URL</label>
         <input
           type="url"
