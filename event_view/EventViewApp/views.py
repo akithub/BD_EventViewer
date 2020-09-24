@@ -30,11 +30,5 @@ def event_edit(request, event_id):
                 print(elm)
     context = {
         'event': event
-        # 'title': event.title,
-        # 'start_date': event.start_date,
-        # 'end_date': event.end_date,
-        # 'content': event.content,
-        # 'period': event.period,
-        # 'url': event.url
     }
     return render(request, 'EventViewApp/edit.html', context)
