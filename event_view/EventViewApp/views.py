@@ -23,10 +23,9 @@ def event_add(request):
             form.save(commit=True)
         else:
             print("ERROR FORM INVALID")
-            for elm in form:
-                print(elm)
     context = {
-        'event': event
+        'event': event,
+        'periods': Event.PERIOD_CHOICE
     }
     return render(request, 'EventViewApp/edit.html', context)
 
@@ -41,8 +40,6 @@ def event_edit(request, event_id):
             form.save(commit=True)
         else:
             print("ERROR FORM INVALID")
-            for elm in form:
-                print(elm)
     context = {
         'event': event,
         'periods': Event.PERIOD_CHOICE
