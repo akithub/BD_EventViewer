@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.forms.models import model_to_dict
 
@@ -21,6 +21,7 @@ def event_add(request):
         form = EventForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
+            return redirect('/eventview/')
         else:
             print("ERROR FORM INVALID")
     context = {
@@ -38,6 +39,7 @@ def event_edit(request, event_id):
         form = EventForm(request.POST, instance=event)
         if form.is_valid():
             form.save(commit=True)
+            return redirect('/eventview/')
         else:
             print("ERROR FORM INVALID")
     context = {
