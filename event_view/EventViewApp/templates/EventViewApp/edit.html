@@ -42,6 +42,14 @@
       <button class="btn btn-primary" type="submit">保存</button>
     </div>
   </form>
-</div>
+  <button class="btn" id="delete_btn"><i class="fas fa-trash-alt"></i></button>
+  <script type="text/javascript">
+    $("#delete_btn").on("click", function () {
+      if (confirm("削除しますか？")) {
+        location.href = "{% url 'event_delete' event.id %}";
+        alert("削除しました.");
+      }
+    });
+  </script>
 </div>
 {% endblock %}

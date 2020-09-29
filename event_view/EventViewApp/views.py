@@ -14,6 +14,13 @@ def event_view(request):
     return render(request, 'EventViewApp/event_view.html', context)
 
 
+def event_delete(request, event_id):
+    try:
+        event = Event.objects.get(pk=event_id)
+        event.delete()
+    except Event.DoesNotExist:
+        raise Http404("Event does not exist")
+    return redirect('/eventview/')
 
 def event_add(request):
     event = Event()
