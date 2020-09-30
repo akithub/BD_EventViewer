@@ -2,12 +2,12 @@
 <div class="navbar bg-light shadow-sm">
   <div class="container d-flex justify-content-between">
     <div class="navbar-brand d-flex align-items-center">
-      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_daily">
-      <label class="shadow mr-3 ml-3 mb-0 btn btn-outline-primary" for="btn_daily">Daily</label>
-      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_temporarily">
-      <label class="shadow mr-3 ml-3 mb-0 btn btn-outline-danger" for="btn_temporarily">Temporarily</label>
-      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_forever">
-      <label class="shadow mr-3 ml-3 mb-0 btn btn-outline-warning" for="btn_forever">Forever</label>
+      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_daily" value="Daily" checked>
+      <label class="shadow mr-3 ml-3 mb-0 btn btn-outline-primary active" for="btn_daily">Daily</label>
+      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_temporarily" value="Temporarily" checked>
+      <label class="shadow mr-3 ml-3 mb-0 btn btn-outline-danger active" for="btn_temporarily">Temporarily</label>
+      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_forever" value="Forever" checked>
+      <label class="shadow mr-3 ml-3 mb-0 btn btn-outline-warning active" for="btn_forever">Forever</label>
     </div>
     <button class="btn shadow btn-outline-primary" onclick="location.href='/eventview/add'">
       追加
