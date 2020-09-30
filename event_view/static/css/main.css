@@ -16,6 +16,9 @@ body {
 .Forever {
   background-color: #d0e226;
 }
+.tab_btn_input {
+  display: none;
+}
 .event-date {
   font-size: larger;
   font-weight: 700;

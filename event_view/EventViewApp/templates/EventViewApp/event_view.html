@@ -1,26 +1,26 @@
-{% extends 'EventViewApp/_layout.html' %} {% block content %}
+{% extends 'EventViewApp/_layout.html' %} {% block content %} {% load static %}
+<div class="navbar bg-light shadow-sm">
+  <div class="container d-flex justify-content-between">
+    <div class="navbar-brand d-flex align-items-center">
+      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_daily">
+      <label class="shadow mr-3 ml-3 mb-0 btn btn-outline-primary" for="btn_daily">Daily</label>
+      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_temporarily">
+      <label class="shadow mr-3 ml-3 mb-0 btn btn-outline-danger" for="btn_temporarily">Temporarily</label>
+      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_forever">
+      <label class="shadow mr-3 ml-3 mb-0 btn btn-outline-warning" for="btn_forever">Forever</label>
+    </div>
+    <button class="btn btn-outline-primary" onclick="location.href='/eventview/add'">
+      追加
+    </button>
+  </div>
+</div>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-4">
-      <button class="btn btn-outline-primary">daily</button>
-      <button class="btn btn-outline-danger">Temporarily</button>
-      <button class="btn btn-outline-primary">Forever</button>
-    </div>
-    <div class="col-4"></div>
-    <div class="col-4">
-      <button
-        class="btn btn-outline-primary"
-        onclick="location.href='/eventview/add'"
-      >
-        追加
-      </button>
+    <div class="masonry">
+      {% for event in events %}
+      <div class="masonry-item">{% include 'EventViewApp/parts/poster.html' %}</div>
+      {% endfor %}
     </div>
   </div>
 </div>
-<div class="masonry">
-  {% for event in events %}
-  <div class="masonry-item">{% include 'EventViewApp/parts/poster.html' %}</div>
-  {% endfor %}
-</div>
-
 {% endblock %}
