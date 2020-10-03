@@ -5,7 +5,7 @@
       <button onclick="location.href='/eventview'" class="btn" id="back-btn"><i class="fas fa-arrow-left fa-3x"></i></button>
     </div>
     <div class="col-11 text-right">
-      <button class="btn" id="delete_btn"><i class="fas fa-trash-alt fa-3x"></i></button>
+      {% if event.id %} {% include 'EventViewApp/parts/delete_btn.html' %} {% endif %}
     </div>
   </div>
   <form action="" method="POST">
@@ -49,13 +49,5 @@
       <button class="btn btn-primary" type="submit">保存</button>
     </div>
   </form>
-  <script type="text/javascript">
-    $("#delete_btn").on("click", function () {
-      if (confirm("削除しますか？")) {
-        location.href = "{% url 'event_delete' event.id %}";
-        alert("削除しました.");
-      }
-    });
-  </script>
 </div>
 {% endblock %}

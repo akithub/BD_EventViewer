@@ -1,0 +1,11 @@
+<div>
+    <button class="btn" id="delete_btn"><i class="fas fa-trash-alt fa-3x"></i></button>
+</div>
+<script type="text/javascript">
+    $("#delete_btn").on("click", function () {
+        if (confirm("削除しますか？")) {
+            location.href = "{% url 'event_delete' event.id %}";
+            alert("削除しました.");
+        }
+    });
+</script>
