@@ -19,6 +19,9 @@ body {
 .tab_btn_input {
   display: none;
 }
+.bg-maroon {
+  background-color: #800000;
+}
 .event-date {
   font-size: larger;
   font-weight: 700;
