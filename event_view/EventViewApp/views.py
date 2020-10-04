@@ -10,7 +10,7 @@ from django.contrib.auth.views import(LoginView, LogoutView)
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm
 
-from datetime import date
+from datetime import date, timedelta
 
 class Login(LoginView):
     form_class = LoginForm
@@ -28,6 +28,16 @@ def event_view(request):
         'events': events
     }
     return render(request, 'EventViewApp/event_view.html', context)
+
+@login_required
+def event_view_achive(request):
+    today = date.today()
+    events = Event.objects.filter(end_date__gte=today-timedelta(days=7))
+    context = {
+        'events': events
+    }
+    return render(request, 'EventViewApp/event_view.html', context)
+
 
 
 @login_required
