@@ -25,6 +25,9 @@ body {
 .bg-lightskyblue {
   background-color: lightskyblue;
 }
+.font-size-smaller {
+  font-size: smaller;
+}
 .event-date {
   font-size: larger;
   font-weight: 700;
