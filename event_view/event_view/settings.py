@@ -25,6 +25,11 @@ ALLOWED_HOSTS = []
 
 DATABASES = {}
 
+LOGIN_URL = '/eventview/login'
+LOGIN_REDIRECT_URL = '/eventview'
+LOGOUT_REDIRECT_URL='/eventview/login'
+
+AUTH_USER_MODEL = 'EventViewApp.User'
 
 # Application definition
 
