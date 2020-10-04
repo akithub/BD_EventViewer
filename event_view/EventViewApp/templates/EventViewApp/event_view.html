@@ -1,7 +1,7 @@
 {% extends 'EventViewApp/_layout.html' %} {% block content %} {% load static %}
-<div class="navbar bg-maroon shadow-sm">
+<div class="navbar bg-lightskyblue shadow-sm">
   <div class="container d-flex justify-content-between">
-    <div class="navbar-brand d-flex align-items-center">
+    <div class="d-flex align-items-center">
       <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_daily" value="Daily" checked>
       <label class="shadow mr-3 mb-0 btn btn-outline-primary active" for="btn_daily">Daily</label>
       <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_temporarily" value="Temporarily" checked>
@@ -9,9 +9,11 @@
       <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_forever" value="Forever" checked>
       <label class="shadow mr-3 mb-0 btn btn-outline-warning active" for="btn_forever">Forever</label>
     </div>
-    <button class="btn shadow btn-outline-primary" onclick="location.href='/eventview/add'">
-      追加
-    </button>
+    <div class="d-flex align-items-centetr">
+      <button class="btn shadow btn-outline-primary" onclick="location.href='/eventview/add'">
+        追加
+      </button>
+    </div>
   </div>
 </div>
 <div class="container-fluid">

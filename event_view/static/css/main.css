@@ -22,6 +22,9 @@ body {
 .bg-maroon {
   background-color: #800000;
 }
+.bg-lightskyblue {
+  background-color: lightskyblue;
+}
 .event-date {
   font-size: larger;
   font-weight: 700;
