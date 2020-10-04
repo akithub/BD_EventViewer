@@ -10,6 +10,8 @@ from django.contrib.auth.views import(LoginView, LogoutView)
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm
 
+from datetime import date
+
 class Login(LoginView):
     form_class = LoginForm
     template_name = 'EventViewApp/login.html'
@@ -20,7 +22,8 @@ class Logout(LoginRequiredMixin, LogoutView):
 
 @login_required
 def event_view(request):
-    events = Event.objects.all()
+    today = date.today()
+    events = Event.objects.filter(end_date__gte=today)
     context = {
         'events': events
     }
