@@ -4,7 +4,7 @@
 <script type="text/javascript">
     $("#delete_btn").on("click", function () {
         if (confirm("削除しますか？")) {
-            location.href = "{% url 'event_delete' event.id %}";
+            location.href = "{% url 'EventViewApp:event_delete' event.id %}";
             alert("削除しました.");
         }
     });
