@@ -8,9 +8,7 @@
       <div class="event event-date">{{ event.start_date|date:"Y/m/j" }} ～ {{ event.end_date|date:"Y/m/j" }}</div>
     </div>
     <div class="row">
-      <div class="event-content">
-        {{ event.content }}
-      </div>
+      <div class="event-content pre-wrap">{{ event.content }}</div>
     </div>
     <div class="row event">
       <div class="col-4">

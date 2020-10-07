@@ -91,6 +91,9 @@ body {
   top: 1px;
   transform: rotate(1.4deg);
 }
+.pre-wrap {
+  white-space: pre-wrap;
+}
 .masonry {
   margin: 0 auto;
   padding: 5px;
