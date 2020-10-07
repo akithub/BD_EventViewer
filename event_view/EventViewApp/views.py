@@ -6,8 +6,9 @@ from .models import Event
 from .forms import EventForm, LoginForm
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import(LoginView, LogoutView)
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 from .forms import LoginForm
 
 from datetime import date, timedelta
@@ -19,6 +20,20 @@ class Login(LoginView):
 
 class Logout(LoginRequiredMixin, LogoutView):
     template_name = 'EventViewApp/login.html'
+
+class PasswordChange(LoginRequiredMixin, PasswordChangeView):
+    """パスワード変更ビュー"""
+    success_url = reverse_lazy('EventViewApp:password_change_done')
+    template_name = 'EventViewApp/password_change.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs) # 継承元のメソッドCALL
+        context["form_name"] = "password_change"
+        return context
+
+class PasswordChangeDone(LoginRequiredMixin,PasswordChangeDoneView):
+    """パスワード変更完了"""
+    template_name = 'EventViewApp/password_change_done.html'
 
 @login_required
 def event_view(request):
