@@ -25,16 +25,17 @@ ALLOWED_HOSTS = []
 
 DATABASES = {}
 
-LOGIN_URL = '/eventview/login'
+LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/eventview'
-LOGOUT_REDIRECT_URL='/eventview/login'
+LOGOUT_REDIRECT_URL='/accounts/login'
 
-AUTH_USER_MODEL = 'EventViewApp.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
 INSTALLED_APPS = [
     'EventViewApp.apps.EventviewappConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -114,7 +115,9 @@ STATIC_ROOT = BASE_DIR.parent / 'static'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'static',
+    BASE_DIR / 'EventViewApp' / 'static',
+    BASE_DIR / 'accounts' / 'static'
 ]
 
 INTERNAL_IPS = [
