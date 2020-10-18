@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.forms.models import model_to_dict
+from django.db.models import Q
 
 from .models import Event
 from .forms import EventForm
@@ -8,6 +9,8 @@ from .forms import EventForm
 from django.contrib.auth.decorators import login_required
 
 from datetime import date, timedelta
+import calendar
+from itertools import chain
 
 @login_required
 def event_view(request):
@@ -27,6 +30,26 @@ def event_view_achive(request):
     }
     return render(request, 'EventViewApp/event_view.html', context)
 
+def get_last_date(dt):
+    return dt.replace(day=calendar.monthrange(dt.year, dt.month)[1])
+
+def get_first_date(dt):
+    return dt.replace(day=1)
+
+@login_required
+def event_calendar(request):
+    today = date.today()
+    events = [ {
+            'title': event.title,
+            'start': event.start_date.strftime("%Y-%m-%d"),
+            'end':event.end_date.strftime("%Y-%m-%d")
+        }
+        for event in  Event.objects.exclude(Q(end_date__lte=get_first_date(today)) | Q(start_date__gte=get_last_date(today)))
+        ]
+    context = {
+        'event': events
+    }
+    return render(request, 'EventViewApp/calendar.html', context)
 
 
 @login_required
