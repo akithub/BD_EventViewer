@@ -7,15 +7,7 @@ body {
 #back-btn {
   color: #3a3a3a;
 }
-.Daily {
-  background-color: #3399ff;
-}
-.Temporarily {
-  background-color: #ff5252;
-}
-.Forever {
-  background-color: #d0e226;
-}
+
 .tab_btn_input {
   display: none;
 }
