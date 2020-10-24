@@ -52,7 +52,7 @@
             initialDate: y + "-" + m + "-" + d,
             navLinks: true, // can click day/week names to navigate views
             selectable: true,
-            selectMirror: true,
+            selectMirror: false,
             select: function (arg) {
                 var title = prompt('Event Title:');
                 if (title) {
@@ -70,7 +70,7 @@
 
                 $('#calendarModal').modal('show');
             },
-            editable: true,
+            editable: false,
             dayMaxEvents: false, // allow "more" link when too many events
             events: eventData
         });
