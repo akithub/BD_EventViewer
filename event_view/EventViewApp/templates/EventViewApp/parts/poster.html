@@ -2,23 +2,37 @@
   <div class="event-period {{ event.get_period_display }}">{{ event.get_period_display }}</div>
   <div class="container">
     <div class="row">
-      <h4>{{ event.title }}</h4>
+      <h4 id="event_title">
+        {% if event %}
+        {{ event.title }}
+        {% endif %}
+      </h4>
     </div>
     <div class="row">
-      <div class="event event-date">{{ event.start_date|date:"Y/m/j" }} ～ {{ event.end_date|date:"Y/m/j" }}</div>
+      <div id="event_date" class="event event-date">
+        {% if event %}
+        {{ event.start_date|date:"Y/m/j" }} ～ {{ event.end_date|date:"Y/m/j" }}
+        {% endif %}
+      </div>
     </div>
     <div class="row">
-      <div class="event-content pre-wrap">{{ event.content }}</div>
+      <div id="event_content" class="event-content pre-wrap">
+        {% if event %}
+        {{ event.content }}
+        {% endif %}
+      </div>
     </div>
     <div class="row event">
       <div class="col-4">
-        <a class="event-link" href="{{ event.url }}" target="_blank" rel="noopener noreferrer">Link</a>
+        <a id="event_url" class="event-link" href="{% if event %}{{ event.url }}{% endif %}" target="_blank" rel="noopener noreferrer">Link</a>
       </div>
       <div class="col-4">
       </div>
+      {% if event %}
       <div class="col-4 text-right">
         <a class="btn btn-outline-dark" href="/eventview/{{ event.id }}/edit"> 編集 </a>
       </div>
+      {% endif %}
     </div>
   </div>
 </div>
