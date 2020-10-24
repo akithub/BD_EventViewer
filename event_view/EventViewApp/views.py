@@ -1,5 +1,6 @@
+from django.core import serializers
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 from django.forms.models import model_to_dict
 from django.db.models import Q
 
@@ -38,18 +39,31 @@ def get_first_date(dt):
 
 @login_required
 def event_calendar(request):
+    colors = {
+        1: '#3399ff',
+        2: '#ff5252',
+        3: '#d0e226'
+    }
     today = date.today()
     events = [ {
             'title': event.title,
+            'id' : event.id,
             'start': event.start_date.strftime("%Y-%m-%d"),
-            'end':event.end_date.strftime("%Y-%m-%d")
-        }
+            'end':event.end_date.strftime("%Y-%m-%d"),
+            'color': colors.get(event.period),
+            }
         for event in  Event.objects.exclude(Q(end_date__lte=get_first_date(today)) | Q(start_date__gte=get_last_date(today)))
         ]
     context = {
-        'event': events
+        'event_data': events
     }
     return render(request, 'EventViewApp/calendar.html', context)
+
+@login_required
+def ajax_get_event(request):
+    event_id = request.POST.get('event_id')
+    event = Event.objects.filter(pk=event_id)
+    return JsonResponse(serializers.serialize("json", event), safe=False)
 
 
 @login_required

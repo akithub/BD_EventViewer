@@ -17,6 +17,12 @@ body {
 .bg-lightskyblue {
   background-color: lightskyblue;
 }
+.bg-transparent {
+  background: transparent;
+}
+.border-none {
+  border: none !important;
+}
 .font-size-smaller {
   font-size: smaller;
 }

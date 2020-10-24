@@ -6,11 +6,36 @@
     <div class="poster">
         <div id='calendar'></div>
     </div>
-    {{ event|json_script:"event-data" }}
+    {{ event_data|json_script:"event-data" }}
+</div>
+<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content bg-transparent border-none">
+            {% include 'EventViewApp/parts/poster.html' %}
+        </div>
+    </div>
 </div>
 <script>
     eventData = JSON.parse(document.getElementById('event-data').textContent);
-    console.log(eventData);
+
+    async function updateModal(event_id) {
+        await $.ajax({
+            'url': '{% url "EventViewApp:ajax_get_event" %}',
+            'type': 'POST',
+            'data': {
+                'event_id': event_id,
+            },
+            'dataType': 'json'
+        }).done(response => {
+            let event = JSON.parse(response)[0].fields;
+            $('#event_title').text(event.title)
+            $('#event_date').text(event.start_date + " ～ " + event.end_date)
+            $('#event_content').text(event.content)
+            $('#event_url').prop('href', event.url);
+        });
+        return;
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar');
         var dt = new Date();
@@ -40,10 +65,10 @@
                 }
                 calendar.unselect()
             },
-            eventClick: function (arg) {
-                if (confirm('Are you sure you want to delete this event?')) {
-                    arg.event.remove()
-                }
+            eventClick: async function (arg) {
+                await updateModal(arg.event.id);
+
+                $('#calendarModal').modal('show');
             },
             editable: true,
             dayMaxEvents: false, // allow "more" link when too many events
