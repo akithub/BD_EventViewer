@@ -47,7 +47,8 @@ def event_calendar(request):
     colors = {
         1: '#3399ff',
         2: '#ff5252',
-        3: '#d0e226'
+        3: '#d0e226',
+        4: '#18aa1d'
     }
     today = date.today()
     events = [ {
