@@ -15,6 +15,6 @@ class Event(models.Model):
     last_update = models.DateField(auto_now=True)
     content = models.TextField()
     period = models.IntegerField(choices=PERIOD_CHOICE)
-    url = models.URLField()
+    url = models.URLField(blank = True, null = True )
     def __str__(self):
         return self.title
