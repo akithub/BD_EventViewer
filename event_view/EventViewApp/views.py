@@ -17,6 +17,11 @@ from itertools import chain
 def event_view(request):
     today = date.today()
     events = Event.objects.filter(end_date__gte=today)
+    for e in events:
+        if today < e.last_update + timedelta(days=7):
+            e.is_new = True
+        else:
+            e.is_new = False
     context = {
         'events': events
     }
