@@ -51,6 +51,8 @@ def event_calendar(request):
         4: '#18aa1d'
     }
     today = date.today()
+    end_date = get_first_date(today)-timedelta(days=7)
+    start_date = get_last_date(today)+timedelta(days=7)
     events = [ {
             'title': event.title,
             'id' : event.id,
@@ -58,7 +60,7 @@ def event_calendar(request):
             'end':event.end_date.strftime("%Y-%m-%d"),
             'color': colors.get(event.period),
             }
-        for event in  Event.objects.exclude(Q(end_date__lte=get_first_date(today)) | Q(start_date__gte=get_last_date(today)))
+        for event in  Event.objects.exclude(Q(end_date__lte=end_date) | Q(start_date__gte=start_date))
         ]
     context = {
         'event_data': events
