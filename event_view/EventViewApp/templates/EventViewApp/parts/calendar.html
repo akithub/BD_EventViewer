@@ -22,6 +22,8 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script type="text/javascript" src="{% static 'js/poster.js' %}"></script>
 <script>
     eventData = JSON.parse(document.getElementById('event-data').textContent);
 
@@ -39,6 +41,7 @@
             $('#event_date').text(event.start_date + " ～ " + event.end_date)
             $('#event_content').text(event.content)
             $('#event_url').prop('href', event.url);
+            renderMarkdown();
         });
         return;
     }
