@@ -21,11 +21,7 @@
       </div>
     </div>
     <div class="row">
-      <div id="event_content" class="event-content pre-wrap">
-        {% if event %}
-        {{ event.content }}
-        {% endif %}
-      </div>
+      <div id="event_content" class="event-content">{% if event %}{{ event.content }}{% endif %}</div>
     </div>
     <div class="row event">
       <div class="col-4">

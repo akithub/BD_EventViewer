@@ -9,22 +9,33 @@
     </div>
   </div>
   <form action="" method="POST">
+    {% csrf_token %}
     <div class="poster">
       <div class="row">
         <div class="col-6">
-          {% csrf_token %}
-          <div class="form-group">
-            <label for="id_title">タイトル</label>
-            <input type="text" class="form-control" name="title" maxlength="200" id="id_title" value="{{ event.title }}" />
+          <div class=row>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="id_title">タイトル</label>
+                <input type="text" class="form-control" name="title" maxlength="200" id="id_title" value="{{ event.title }}" />
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="id_start_date">開始日</label>
-            <input type="date" class="form-control" name="start_date" id="id_start_date" value="{{ event.start_date|date:'Y-m-d' }}" />
+          <div class=row>
+            <div class="col-6">
+              <divc class="form-group">
+                <label for="id_start_date">開始日</label>
+                <input type="date" class="form-control" name="start_date" id="id_start_date" value="{{ event.start_date|date:'Y-m-d' }}" />
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="id_end_date">終了日</label>
+                <input type="date" class="form-control" name="end_date" id="id_end_date" value="{{ event.end_date|date:'Y-m-d' }}" />
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="id_end_date">終了日</label>
-            <input type="date" class="form-control" name="end_date" id="id_end_date" value="{{ event.end_date|date:'Y-m-d' }}" />
-          </div>
+        </div>
+        <div class="col-6">
           <div class="form-group">
             <label for="id_period">期間</label>
             {% for period in periods %}
@@ -39,10 +50,18 @@
             <input type="url" class="form-control" name="url" maxlength="200" id="id_url" value="{{ event.url }}" />
           </div>
         </div>
+      </div>
+      <div class="row">
         <div class="col-6">
           <div class="form-group">
             <label for="id_content">内容</label>
             <textarea class="form-control" name="content" cols="40" rows="20" id="id_content">{{ event.content }}</textarea>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label>表示</label>
+            <div id="markdown_preview" class="event-content"></div>
           </div>
         </div>
       </div>
@@ -50,4 +69,24 @@
     </div>
   </form>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script type="text/javascript" src="{% static 'js/poster.js' %}"></script>
+<script type="text/javascript">
+  // テキストエリアの値をmarkdown表示にする
+  let updatePreview = function (elm) {
+    let html = marked($(elm).val());
+    $('#markdown_preview').html(html);
+  }
+  $(function () {
+    // キー入力がされた際にmarkdown表示を更新
+    $('#id_content').keyup(function () {
+      updatePreview(this);
+    });
+    // 初期値にNoneが入ってしまうのでとりあえず空にする、そのうちdjango側で対応したい
+    updatePreview($('#id_content'));
+    if ($('#id_url').val() == 'None') {
+      $('#id_url').val('');
+    }
+  });
+</script>
 {% endblock %}

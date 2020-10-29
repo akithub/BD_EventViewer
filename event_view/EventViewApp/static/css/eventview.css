@@ -5,6 +5,14 @@
 .event-content {
   margin: 1em 0;
 }
+#markdown_preview {
+  border: 2px solid #ffd498;
+  border-radius: 10px;
+  height: 100%;
+  padding: 1em;
+  min-height: 30em;
+  margin: 0 0;
+}
 .event-link {
   font-family: "Caveat", cursive;
   font-size: 2em;
