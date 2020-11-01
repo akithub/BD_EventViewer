@@ -25,9 +25,7 @@
     </div>
     <div class="row event">
       <div class="col-4">
-        {% if event.url %}
-        <a id="event_url" class="event-link" href="{% if event %}{{ event.url }}{% endif %}" target="_blank" rel="noopener noreferrer">Link</a>
-        {% endif %}
+        <a id="event_url" class="event-link" href="{% if event %}{{ event.url }}{% endif %}" target="_blank" rel="noopener noreferrer">{% if event.url %}Link{% endif %}</a>
       </div>
       <div class="col-4">
       </div>

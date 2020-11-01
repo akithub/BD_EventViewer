@@ -40,6 +40,7 @@
             $('#event_title').text(event.title)
             $('#event_date').text(event.start_date + " ～ " + event.end_date)
             $('#event_content').text(event.content)
+            $('#event_url').text('Link');
             $('#event_url').prop('href', event.url);
             renderMarkdown();
         });
