@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404, JsonResponse
 from django.forms.models import model_to_dict
 from django.db.models import Q
 
-from .models import Event
+from .models import Event, Info
 from .forms import EventForm
 
 from django.contrib.auth.decorators import login_required
@@ -17,13 +17,15 @@ from itertools import chain
 def event_view(request):
     today = date.today()
     events = Event.objects.filter(end_date__gte=today)
+    info, created = Info.objects.get_or_create(identifier='update-info')
     for e in events:
         if today < e.last_update + timedelta(days=7):
             e.is_new = True
         else:
             e.is_new = False
     context = {
-        'events': events
+        'events': events,
+        'info': info
     }
     return render(request, 'EventViewApp/event_view.html', context)
 
@@ -118,3 +120,13 @@ def event_edit(request, event_id):
         'periods': Event.PERIOD_CHOICE
     }
     return render(request, 'EventViewApp/edit.html', context)
+
+@login_required
+def update_info_save(request):
+    info_id = request.POST.get('id')
+    content = request.POST.get('content')
+    update_info= Info.objects.filter(pk=info_id)
+    update_info.update(
+        content = content
+    )
+    return JsonResponse(serializers.serialize("json", update_info), safe=False)

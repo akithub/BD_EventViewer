@@ -21,6 +21,7 @@ $('input[name="period_type"]').on("change", function () {
 // modal open
 $("#info_btn").on("click", function () {
   $("#updateInfoModal").modal("show");
+  updatePreview("#markdown_edit");
 });
 // テキストエリアの値をmarkdown表示にする
 let updatePreview = function (elm) {
@@ -40,7 +41,9 @@ $(function () {
 // info編集エディタ
 // 初期は非表示に
 $("#update-info-editor").hide();
+$("#editor-save-btn").hide();
 //表示切り替え
 $("#editor-toggle-btn").on("click", function () {
   $("#update-info-editor").toggle();
+  $("#editor-save-btn").toggle();
 });

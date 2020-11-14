@@ -42,14 +42,15 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12">
+            <div class="d-flex align-items-center">
               <button class="btn shadow m-3 btn-outline-primary" id="editor-toggle-btn">edit</button>
+              <button class="btn shadow m-3 btn-outline-primary" id="editor-save-btn">save</button>
             </div>
           </div>
           <div class="row" id="update-info-editor">
             <div class="col-12">
               <div class="form-group">
-                <textarea class="form-control" name="content" cols="40" rows="20" id="markdown_edit"></textarea>
+                <textarea class="form-control" name="content" cols="40" rows="20" id="markdown_edit">{{ info.content }}</textarea>
               </div>
             </div>
           </div>
@@ -67,7 +68,37 @@
     </div>
   </div>
 </div>
+<script src="{% static 'js/ajax.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script type="text/javascript" src="{% static 'js/event_view.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/poster.js' %}"></script>
+<script type="text/javascript">
+  $(function () {
+    // モーダル内の編集内容を保存
+    async function saveModalContent() {
+      let content = $('#markdown_edit').val();
+      let id = '{{ info.id }}';
+      await $.ajax({
+        'url': '{% url "EventViewApp:update_info_save" %}',
+        'type': 'POST',
+        'data': {
+          'id': id,
+          'content': content
+        },
+        'dataType': 'json'
+      }).done(respnse => {
+        alert("保存完了");
+      }).fail(() => {
+        alert("保存失敗");
+      });
+      return;
+    }
+    // モーダルで編集した内容を保存するボタン
+    $('#editor-save-btn').on('click', function () {
+      $('this').prop('disabled', true);
+      saveModalContent();
+      $('this').prop('disabled', false);
+    });
+  });
+</script>
 {% endblock %}

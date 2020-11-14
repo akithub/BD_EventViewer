@@ -12,5 +12,6 @@ urlpatterns = [
     path('ajax_get', views.ajax_get_event, name='ajax_get_event'),
     path('<int:event_id>/edit', views.event_edit, name='event_edit'),
     path('<int:event_id>/delete', views.event_delete, name='event_delete'),
-    path('<int:event_id>/save', views.event_edit, name='event_save')
+    path('<int:event_id>/save', views.event_edit, name='event_save'),
+    path('update_info/save', views.update_info_save, name='update_info_save'),
 ]

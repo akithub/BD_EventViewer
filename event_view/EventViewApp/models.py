@@ -19,3 +19,8 @@ class Event(models.Model):
     url = models.URLField(blank = True, null = True )
     def __str__(self):
         return self.title
+
+class Info(models.Model):
+    content = models.TextField(default="")
+    identifier = models.CharField(max_length=200, default="")
+    last_update = models.DateTimeField(auto_now=True)
