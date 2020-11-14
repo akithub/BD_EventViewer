@@ -17,6 +17,9 @@ body {
 .bg-lightskyblue {
   background-color: lightskyblue;
 }
+.bg-transparent-white {
+  background-color: #f9f7e378;
+}
 .bg-transparent {
   background: transparent;
 }
