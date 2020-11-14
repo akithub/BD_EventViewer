@@ -14,6 +14,9 @@
       <label class="shadow mr-3 mb-0 btn btn-outline-info active" for="btn_buff">Buff</label>
     </div>
     <div class="d-flex align-items-center">
+      <button class="btn shadow ml-3 btn-outline-primary" id="info_btn">
+        Info
+      </button>
       <button class="btn shadow ml-3 btn-outline-primary" onclick="location.href='/eventview/calendar'">
         Calendar
       </button>
@@ -23,6 +26,35 @@
       <button class="btn shadow ml-3 btn-outline-primary" onclick="location.href='/eventview/achive'">
         一週間前
       </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="updateInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content bg-transparent border-none">
+      <div class="poster">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <div id="update-info" class="event-content"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button class="btn shadow m-3 btn-outline-primary" id="editor-toggle-btn">edit</button>
+            </div>
+          </div>
+          <div class="row" id="update-info-editor">
+            <div class="col-12">
+              <div class="form-group">
+                <textarea class="form-control" name="content" cols="40" rows="20" id="markdown_edit"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

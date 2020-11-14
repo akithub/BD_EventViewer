@@ -5,13 +5,16 @@
 .event-content {
   margin: 1em 0;
 }
+#update-info,
 #markdown_preview {
-  border: 2px solid #ffd498;
-  border-radius: 10px;
   height: 100%;
   padding: 1em;
   min-height: 30em;
   margin: 0 0;
+}
+#markdown_preview {
+  border: 2px solid #ffd498;
+  border-radius: 10px;
 }
 .event-link {
   font-family: "Caveat", cursive;
