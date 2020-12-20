@@ -37,12 +37,16 @@ INSTALLED_APPS = [
     'EventViewApp.apps.EventviewappConfig',
     'accounts.apps.AccountsConfig',
     'django.contrib.admin',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
