@@ -44,6 +44,9 @@ body {
 .poster h1 {
   color: #3a3a3a;
 }
+.poster img {
+  width: 100%;
+}
 .poster:before,
 .poster:after {
   content: "";
