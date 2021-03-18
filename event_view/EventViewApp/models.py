@@ -8,7 +8,10 @@ class Event(models.Model):
         (2, 'Temporarily'),
         (3, 'Forever'),
         (4, 'Guild'),
-        (5, 'Buff')
+        (5, 'Buff'),
+        (6, 'Login'),
+        (7, 'Season'),
+        (8, 'Perl')
     )
     title = models.CharField(max_length=200)
     start_date = models.DateField()

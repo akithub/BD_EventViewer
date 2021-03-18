@@ -2,16 +2,10 @@
 <div class="navbar bg-transparent-white shadow-sm">
   <div class="container d-flex justify-content-between">
     <div class="d-flex align-items-center">
-      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_daily" value="Daily" checked>
-      <label class="shadow mr-3 mb-0 btn btn-outline-primary active" for="btn_daily">Daily</label>
-      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_temporarily" value="Temporarily" checked>
-      <label class="shadow mr-3 mb-0 btn btn-outline-danger active" for="btn_temporarily">Temporarily</label>
-      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_forever" value="Forever" checked>
-      <label class="shadow mr-3 mb-0 btn btn-outline-warning active" for="btn_forever">Forever</label>
-      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_guild" value="Guild" checked>
-      <label class="shadow mr-3 mb-0 btn btn-outline-success active" for="btn_guild">Guild</label>
-      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_buff" value="Buff" checked>
-      <label class="shadow mr-3 mb-0 btn btn-outline-info active" for="btn_buff">Buff</label>
+      {% for period in periods %}
+      <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_{{ period }}" value="{{ period }}" checked>
+      <label class="shadow mr-3 mb-0 category-btn {{ period }} active" for="btn_{{ period }}">{{ period }}</label>
+      {% endfor %}
     </div>
     <div class="d-flex align-items-center">
       <button class="btn shadow ml-3 btn-outline-secondary" id="info_btn">

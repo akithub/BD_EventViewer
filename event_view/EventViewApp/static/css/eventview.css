@@ -34,6 +34,7 @@
   font-weight: bold;
   font-family: "Caveat", cursive;
   font-size: 2em;
+  background-color: var(--color);
 }
 .event-new {
   font-family: "Caveat", cursive;
@@ -45,18 +46,53 @@
   text-shadow: 4px 3px 0px #f9c123, 9px 8px 0px rgba(0, 0, 0, 0.15);
   transform: rotate(-12.5deg);
 }
+
 .Daily {
-  background-color: #3399ff;
+  --color: #3399ff;
 }
 .Temporarily {
-  background-color: #ff5252;
+  --color: #ff5252;
 }
 .Forever {
-  background-color: #d0e226;
-}
-.Buff {
-  background-color: #138496;
+  --color: #b8cc00;
 }
 .Guild {
-  background-color: #18aa1d;
+  --color: #ff5cf7;
+}
+.Buff {
+  --color: #138496;
+}
+.Login {
+  --color: #00a816;
+}
+.Season {
+  --color: #3d3aff;
+}
+.Perl {
+  --color: #df6400;
+}
+
+.category-btn {
+  display: inline-block;
+  font-weight: 400;
+  color: rgb(41, 41, 41);
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid rgb(41, 41, 41);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.tab_btn_input:checked + label{
+  color: #fff;
+  border: 1px solid var(--color);
+  background-color: var(--color);
 }

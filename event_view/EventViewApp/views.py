@@ -24,6 +24,7 @@ def event_view(request):
         else:
             e.is_new = False
     context = {
+        'periods' : [p[1] for p in Event.PERIOD_CHOICE],
         'events': events,
         'info': info
     }
@@ -51,7 +52,10 @@ def event_calendar(request):
         2: '#ff5252',
         3: '#d0e226',
         4: '#18aa1d',
-        5: '#138496'
+        5: '#138496',
+        6: '#2c29d3',
+        7: '#02753c',
+        8: '#ff3bf5'
     }
     today = date.today()
     end_date = get_first_date(today)-timedelta(days=7)
