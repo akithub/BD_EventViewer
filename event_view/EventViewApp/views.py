@@ -50,12 +50,12 @@ def event_calendar(request):
     colors = {
         1: '#3399ff',
         2: '#ff5252',
-        3: '#d0e226',
-        4: '#18aa1d',
+        3: '#b8cc00',
+        4: '#ff5cf7',
         5: '#138496',
-        6: '#2c29d3',
-        7: '#02753c',
-        8: '#ff3bf5'
+        6: '#00a816',
+        7: '#3d3aff',
+        8: '#df6400'
     }
     today = date.today()
     end_date = get_first_date(today)-timedelta(days=7)
