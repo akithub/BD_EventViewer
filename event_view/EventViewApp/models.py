@@ -17,6 +17,7 @@ class Event(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     last_update = models.DateField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True)
     content = models.TextField()
     period = models.IntegerField(choices=PERIOD_CHOICE)
     url = models.URLField(blank = True, null = True )

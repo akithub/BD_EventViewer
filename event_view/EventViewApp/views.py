@@ -19,7 +19,7 @@ def event_view(request):
     events = Event.objects.filter(end_date__gte=today)
     info, created = Info.objects.get_or_create(identifier='update-info')
     for e in events:
-        if today == e.last_update:
+        if e.created_at == e.last_update:
             e.freshness_tag = 'New'
         elif today < e.last_update + timedelta(days=7):
             e.freshness_tag = 'Update'
