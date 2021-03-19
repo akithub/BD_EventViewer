@@ -1,8 +1,8 @@
 <div class="poster" name="{{ event.get_period_display }}">
   <div class="event-period {{ event.get_period_display }}">{{ event.get_period_display }}</div>
   {% if event %}
-  <div class="event-new" data-new="{{ event.is_new }}">
-    {% if event.is_new == True %}New{% endif %}
+  <div class="event-new {{ event.freshness_tag }}">
+    {{ event.freshness_tag }}
   </div>
   {% endif %}
   <div class="container">

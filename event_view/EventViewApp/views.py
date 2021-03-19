@@ -19,10 +19,12 @@ def event_view(request):
     events = Event.objects.filter(end_date__gte=today)
     info, created = Info.objects.get_or_create(identifier='update-info')
     for e in events:
-        if today < e.last_update + timedelta(days=7):
-            e.is_new = True
+        if today == e.last_update:
+            e.freshness_tag = 'New'
+        elif today < e.last_update + timedelta(days=7):
+            e.freshness_tag = 'Update'
         else:
-            e.is_new = False
+            e.freshness_tag = ''
     context = {
         'periods' : [p[1] for p in Event.PERIOD_CHOICE],
         'events': events,
@@ -34,8 +36,11 @@ def event_view(request):
 def event_view_achive(request):
     today = date.today()
     events = Event.objects.filter(end_date__gte=today-timedelta(days=7))
+    info, created = Info.objects.get_or_create(identifier='update-info')
     context = {
-        'events': events
+        'periods' : [p[1] for p in Event.PERIOD_CHOICE],
+        'events': events,
+        'info': info
     }
     return render(request, 'EventViewApp/event_view.html', context)
 
