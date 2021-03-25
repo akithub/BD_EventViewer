@@ -52,14 +52,15 @@ def get_first_date(dt):
 
 @login_required
 def event_calendar(request):
+    # カレンダー表示の際の帯の色
     colors = {
         1: '#3399ff',
         2: '#ff5252',
         3: '#b8cc00',
         4: '#ff5cf7',
         5: '#138496',
-        6: '#00a816',
-        7: '#3d3aff',
+        6: '#53cc52',
+        7: '#a284ff',
         8: '#df6400'
     }
     today = date.today()
