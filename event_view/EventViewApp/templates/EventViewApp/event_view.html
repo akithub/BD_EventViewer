@@ -1,6 +1,6 @@
 {% extends 'EventViewApp/_layout.html' %} {% block content %} {% load static %}
 <div class="navbar bg-transparent-white shadow-sm">
-  <div class="container d-flex justify-content-between">
+  <div class="container-fluid d-flex justify-content-between">
     <div class="d-flex align-items-center">
       {% for period in periods %}
       <input class="tab_btn_input" name="period_type" type="checkbox" id="btn_{{ period }}" value="{{ period }}" checked>
@@ -23,6 +23,7 @@
     </div>
   </div>
 </div>
+<!-- アップデート情報モーダル -->
 <div class="modal fade" id="updateInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content bg-transparent border-none">
@@ -53,12 +54,18 @@
     </div>
   </div>
 </div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="masonry">
-      {% for event in events %}
-      <div class="masonry-item">{% include 'EventViewApp/parts/poster.html' %}</div>
-      {% endfor %}
+<!-- main content -->
+<div class="d-flex flex-wrap">
+  {% for event in events %}
+  <div class="tile-wrap" id="{{ event.id }}">
+    {% include 'EventViewApp/parts/tile.html' %}
+  </div>
+  {% endfor %}
+</div>
+<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content bg-transparent border-none">
+      {% include 'EventViewApp/parts/poster.html' %}
     </div>
   </div>
 </div>
@@ -80,7 +87,7 @@
           'content': content
         },
         'dataType': 'json'
-      }).done(respnse => {
+      }).done(response => {
         alert("保存完了");
       }).fail(() => {
         alert("保存失敗");
@@ -93,6 +100,40 @@
       saveModalContent();
       $('this').prop('disabled', false);
     });
+    
+    // モーダルのアップデート
+    async function updateModal(event_id) {
+      await $.ajax({
+        'url': '{% url "EventViewApp:ajax_get_event" %}',
+        'type': 'POST',
+        'data': {
+          'event_id': event_id,
+        },
+        'dataType': 'json'
+      }).done(response => {
+        let event = JSON.parse(response)[0].fields;
+        $('#event_title').text(event.title);
+        $('#event_date').text(event.start_date + " ～ " + event.end_date);
+        $('#event_content').text(event.content);
+        $('#event_url').text('Link');
+        $('#edit_btn').prop('href', "/eventview/"+event_id+"/edit");
+        renderMarkdown();
+      });
+      return;
+    }
+
+    // タイルをクリックしたらモーダルを表示
+    $('.tile-wrap').on('click', function() {
+      console.log($(this));
+      let id = $(this).attr("id");
+      showModal(id);
+    });
+
+    // モーダルを表示する
+    async function showModal(event_id) {
+      await updateModal(event_id);
+      $('#eventModal').modal('show');
+    };
   });
-</script>
-{% endblock %}
+  </script>
+  {% endblock %}

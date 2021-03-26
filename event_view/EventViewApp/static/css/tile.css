@@ -1,0 +1,74 @@
+.tile {
+    position: relative;
+    margin: 0.5em 0.5em;
+    /* padding: 0.5rem 0.5rem; */
+    background-color: aliceblue;
+    box-shadow: 10px 10px 15px -10px;
+    vertical-align: middle;
+}
+.tile-wrap {
+    width: 50%;
+}
+.tile-new {
+    position: absolute;
+    top: -0.7em;
+    left: -0.7em;
+    transform: rotate(-17.6deg);
+    z-index: 20;
+    padding: 0 0.1em;
+    color: var(--color);
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Caveat", cursive;
+    text-shadow: 4px 3px 0px #f9c123, 9px 8px 0px rgba(0, 0, 0, 0.15)
+}
+.non-margin {
+    margin: 0;
+}
+.non-padding {
+    padding: 0;
+}
+
+.tile-period {
+    position: relative;
+    top: 0em;
+    left: 0em;
+    background-color: var(--color);
+    color: black;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: "Caveat", cursive;
+    font-weight: bold;
+    /* width: 8rem; */
+}
+.left-days-wrapper {
+    position: relative;
+    /* bottom: 0;
+    margin-left: 1em; */
+    color: rgb(22, 22, 22);
+    font-family: 'Caveat';
+    font-weight: 800;
+    font-size: 1em;
+    height: 3rem;
+}
+.left-days-number {
+    position: absolute;
+    bottom: -0.27em;
+    right: 1.2em;
+    /* vertical-align: text-bottom; */
+    color: #ff2933;
+    font-size: 3em;
+}
+.left-days-days {
+    position: absolute;
+    bottom: 0.1em;
+    right: 0;
+    display: inline-block;
+}
+.tile-title {
+    /* margin: 0.5rem 0 0.5rem 8rem; */
+    font-size: 1.4rem;
+    padding: 0.5rem 0.5rem;
+    width: 40rem;
+}

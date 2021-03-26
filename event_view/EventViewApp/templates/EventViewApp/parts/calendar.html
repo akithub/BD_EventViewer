@@ -42,6 +42,7 @@
             $('#event_content').text(event.content)
             $('#event_url').text('Link');
             $('#event_url').prop('href', event.url);
+            $('#edit_btn').prop('href', "/eventview/"+event_id+"/edit");
             renderMarkdown();
         });
         return;

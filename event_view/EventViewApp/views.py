@@ -17,14 +17,22 @@ from itertools import chain
 def event_view(request):
     today = date.today()
     events = Event.objects.filter(end_date__gte=today)
+
+    # お知らせ用モーダル表示情報を取得
     info, created = Info.objects.get_or_create(identifier='update-info')
+
+    # 表示に必要な情報を付与
     for e in events:
+        # New か Update を付与する
         if e.created_at == e.last_update:
             e.freshness_tag = 'New'
         elif today < e.last_update + timedelta(days=7):
             e.freshness_tag = 'Update'
         else:
             e.freshness_tag = ''
+        # 残り日数を計算
+        e.left_date = (e.end_date - date.today()).days
+
     context = {
         'periods' : [p[1] for p in Event.PERIOD_CHOICE],
         'events': events,
@@ -44,12 +52,15 @@ def event_view_achive(request):
     }
     return render(request, 'EventViewApp/event_view.html', context)
 
-def get_last_date(dt):
+# 月の最終日の日付を返す
+def get_last_date(dt) -> date:
     return dt.replace(day=calendar.monthrange(dt.year, dt.month)[1])
 
-def get_first_date(dt):
+# 月の最初の日付を返す
+def get_first_date(dt) -> date:
     return dt.replace(day=1)
 
+# カレンダー表示
 @login_required
 def event_calendar(request):
     # カレンダー表示の際の帯の色
@@ -80,12 +91,12 @@ def event_calendar(request):
     }
     return render(request, 'EventViewApp/calendar.html', context)
 
+# ajax 形式でイベント内容を取得する
 @login_required
 def ajax_get_event(request):
     event_id = request.POST.get('event_id')
     event = Event.objects.filter(pk=event_id)
     return JsonResponse(serializers.serialize("json", event), safe=False)
-
 
 @login_required
 def event_delete(request, event_id):
