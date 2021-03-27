@@ -16,7 +16,7 @@ from itertools import chain
 @login_required
 def event_view(request):
     today = date.today()
-    events = Event.objects.filter(end_date__gte=today)
+    events = Event.objects.filter(end_date__gte=today).order_by('end_date')
 
     # お知らせ用モーダル表示情報を取得
     info, created = Info.objects.get_or_create(identifier='update-info')
