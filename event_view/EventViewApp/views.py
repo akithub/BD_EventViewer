@@ -79,6 +79,7 @@ def event_calendar(request):
     start_date = get_last_date(today)+timedelta(days=7)
     events = [ {
             'title': event.title,
+            'overview': event.overview,
             'id' : event.id,
             'start': event.start_date.strftime("%Y-%m-%d"),
             'end':event.end_date.strftime("%Y-%m-%d"),

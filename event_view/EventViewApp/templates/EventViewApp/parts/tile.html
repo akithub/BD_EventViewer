@@ -15,27 +15,36 @@
     <!-- メインコンテンツ -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-2 non-padding">
+            <div class="col-xl-3 no-padding">
                 <div class="tile-period {{ event.get_period_display }}">
                     {{ event.get_period_display }}
                 </div>
                 <div class="left-days-wrapper">
                     <div class="left-days-number">{{ event.left_date }}</div>
-                    <div class="left-days-days">Days left</div>
+                    <div class="left-days-label">Days left</div>
                 </div>
             </div>
-            <div class="col-xl-10">
-                <div class="container-fluid d-flex justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <div class="tile-title">
-                            {% if event %}
-                            {{ event.title }}
-                            {% endif %}
+            <div class="col-xl-9">
+                <div class="row">
+                    <div class="col-12">
+                        {% if event.overview %}
+                        <div class="tile-overview">{{ event.overview }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="container-fluid d-flex justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <div class="tile-title">
+                                    {% if event %}
+                                    {{ event.title }}
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            <!-- </div>
-            <div class="col-xl-10"> -->
             </div>
         </div>
     </div>

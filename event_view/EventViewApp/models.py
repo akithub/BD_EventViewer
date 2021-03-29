@@ -18,6 +18,7 @@ class Event(models.Model):
     end_date = models.DateField()
     last_update = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True)
+    overview = models.TextField(blank=True)
     content = models.TextField()
     period = models.IntegerField(choices=PERIOD_CHOICE)
     url = models.URLField(blank = True, null = True )

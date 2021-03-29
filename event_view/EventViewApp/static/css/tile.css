@@ -12,7 +12,7 @@
 .tile-new {
     position: absolute;
     top: -0.7em;
-    left: -0.7em;
+    left: -0.4em;
     transform: rotate(-17.6deg);
     z-index: 20;
     padding: 0 0.1em;
@@ -25,7 +25,7 @@
 .non-margin {
     margin: 0;
 }
-.non-padding {
+.no-padding {
     padding: 0;
 }
 
@@ -33,6 +33,7 @@
     position: relative;
     top: 0em;
     left: 0em;
+    padding: 0.2em;
     background-color: var(--color);
     color: black;
     line-height: 2rem;
@@ -40,12 +41,10 @@
     font-size: 1.8rem;
     font-family: "Caveat", cursive;
     font-weight: bold;
-    /* width: 8rem; */
+    width: 100%;
 }
 .left-days-wrapper {
     position: relative;
-    /* bottom: 0;
-    margin-left: 1em; */
     color: rgb(22, 22, 22);
     font-family: 'Caveat';
     font-weight: 800;
@@ -56,19 +55,24 @@
     position: absolute;
     bottom: -0.27em;
     right: 1.2em;
-    /* vertical-align: text-bottom; */
     color: #ff2933;
     font-size: 3em;
 }
-.left-days-days {
+.left-days-label {
     position: absolute;
     bottom: 0.1em;
     right: 0;
     display: inline-block;
+    color: #5d5d5d;
 }
 .tile-title {
-    /* margin: 0.5rem 0 0.5rem 8rem; */
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    color: #504f4f;
+}
+.tile-overview {
     font-size: 1.4rem;
-    padding: 0.5rem 0.5rem;
-    width: 40rem;
+    font-weight: bold;
+    width: 100%;
 }
