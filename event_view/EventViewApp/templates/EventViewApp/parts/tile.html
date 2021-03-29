@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{% static 'css/tile.min.css' %}">
     {% endif %}
 </head>
-<div class="tile" name="{{ event.get_period_display }}">
+<div class="tile {% if event.freshness_tag == 'New' %}bg-lemonchiffon{% else %}bg-aliceblue{% endif %}" data-period="{{ event.get_period_display }}">
     {% if event %}
     <div class="tile-new {{ event.freshness_tag }}">
         {{ event.freshness_tag }}
@@ -20,7 +20,7 @@
                     {{ event.get_period_display }}
                 </div>
                 <div class="left-days-wrapper">
-                    <div class="left-days-number">{{ event.left_date }}</div>
+                    <div class="left-days-number {% if event.left_date < 7 %}short{% else %}leeway{% endif %}">{{ event.left_date }}</div>
                     <div class="left-days-label">Days left</div>
                 </div>
             </div>

@@ -2,9 +2,15 @@
     position: relative;
     margin: 0.5em 0.5em;
     /* padding: 0.5rem 0.5rem; */
-    background-color: aliceblue;
+    background-color: var(--color);
     box-shadow: 10px 10px 15px -10px;
     vertical-align: middle;
+}
+.bg-aliceblue {
+    --color: aliceblue;
+}
+.bg-lemonchiffon {
+    --color: lemonchiffon;
 }
 .tile-wrap {
     width: 50%;
@@ -44,7 +50,7 @@
     width: 100%;
 }
 .left-days-wrapper {
-    position: relative;
+    /* position: relative; */
     color: rgb(22, 22, 22);
     font-family: 'Caveat';
     font-weight: 800;
@@ -54,9 +60,19 @@
 .left-days-number {
     position: absolute;
     bottom: -0.27em;
-    right: 1.2em;
-    color: #ff2933;
-    font-size: 3em;
+    right: 3.7rem;;
+    color: var(--color);
+    font-size: var(--font-size);
+}
+.leeway {
+    --color: #2d5a2d;
+    text-shadow: 3px 2px 0px #c8fdcf;
+    --font-size: 2.5rem;
+}
+.short {
+    text-shadow: 3px 2px 0px #fde296;
+    --color: #ff2933;
+    --font-size: 3rem;
 }
 .left-days-label {
     position: absolute;

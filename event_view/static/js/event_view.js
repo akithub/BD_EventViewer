@@ -3,7 +3,7 @@ $('input[name="period_type"]').on("change", function () {
   // ボタンに対応するラベルを取得
   label = $('label[for="' + this.id + '"]');
   // 各イベントの tile を取得
-  posters = $('div[class="tile"][name="' + this.value + '"]');
+  posters = $('div[data-period="' + this.value + '"]');
   // ラジオボタンがチェックされていればボタンをactiveにして、ポスターを表示させる
   if ($(this).prop("checked")) {
     label.addClass("active");
