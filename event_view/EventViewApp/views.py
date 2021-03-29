@@ -45,6 +45,11 @@ def event_view_achive(request):
     today = date.today()
     events = Event.objects.filter(end_date__gte=today-timedelta(days=7))
     info, created = Info.objects.get_or_create(identifier='update-info')
+
+    for e in events:
+        # 残り日数を計算
+        e.left_date = (e.end_date - date.today()).days
+
     context = {
         'periods' : [p[1] for p in Event.PERIOD_CHOICE],
         'events': events,
