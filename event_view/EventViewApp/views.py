@@ -24,10 +24,11 @@ def event_view(request):
     # 表示に必要な情報を付与
     for e in events:
         # New か Update を付与する
-        if e.created_at == e.last_update:
-            e.freshness_tag = 'New'
-        elif today < e.last_update + timedelta(days=7):
-            e.freshness_tag = 'Update'
+        if today < e.last_update + timedelta(days=7):
+            if e.created_at == e.last_update:
+                e.freshness_tag = 'New'
+            else:
+                e.freshness_tag = 'Update'
         else:
             e.freshness_tag = ''
         # 残り日数を計算
