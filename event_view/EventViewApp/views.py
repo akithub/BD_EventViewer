@@ -24,7 +24,7 @@ def event_view(request):
     # 表示に必要な情報を付与
     for e in events:
         # New か Update を付与する
-        if today < e.last_update + timedelta(days=7):
+        if today < e.last_update + timedelta(days=3):
             if e.created_at == e.last_update:
                 e.freshness_tag = 'New'
             else:
