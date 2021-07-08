@@ -11,7 +11,8 @@ class Event(models.Model):
         (5, 'Buff'),
         (6, 'Login'),
         (7, 'Season'),
-        (8, 'Perl')
+        (8, 'Perl'),
+        (9, 'SNS')
     )
     title = models.CharField(max_length=200)
     start_date = models.DateField()

@@ -78,7 +78,8 @@ def event_calendar(request):
         5: '#138496',
         6: '#53cc52',
         7: '#a284ff',
-        8: '#df6400'
+        8: '#df6400',
+        9: '#4c94ff'
     }
     today = date.today()
     end_date = get_first_date(today)-timedelta(days=7)
